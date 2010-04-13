@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<!-- Gary Quz Here -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.lolay</groupId>
+	<groupId>org.lolay.capsule</groupId>
 	<artifactId>capsule-project</artifactId>
 	<packaging>pom</packaging>
-	<version>0.5-SNAPSHOT</version>
-	<name>Session Capsule Project</name>
+	<version>1-SNAPSHOT</version>
+	<name>Lolay Session Capsule Project</name>
 	<description></description>
-	<url>http://www.lolay.com</url>
+	<url>http://www.lolay.org</url>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
