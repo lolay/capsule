@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/90" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<context-root>capsule-example</context-root>
+	<session-descriptor>
+		<persistent-store-type>memory</persistent-store-type>
+		<url-rewriting-enabled>false</url-rewriting-enabled>
+	</session-descriptor>
+</weblogic-web-app>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web–app_2_5.xsd" version="2.5">
+	<display-name>capsule-example</display-name>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<listener-class>com.eharmony.capsule.listener.AppInitializer</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.eharmony.capsule.servlet.SessionAnalyzer</listener-class>
+	</listener>
+
+<!--
+	<filter>
+		<filter-name>GZipFilter</filter-name>
+		<filter-class>com.jspbook.GZIPFilter</filter-class>
+	</filter>
+-->
+	
+	<filter>
+		<filter-name>CapsuleFilter</filter-name>
+		<filter-class>com.eharmony.capsule.servlet.SessionCookieFilter</filter-class>
+		<init-param>
+		<description>
+			Optional: Enables the SessionCookieFilter when set to true. You
+			can also set this as a system property (-Dcapsule.enabled=true),
+			which is the more likely scenario for setting this property.
+		</description>
+		<param-name>capsule.enabled</param-name>
+		<param-value>true</param-value>
+		</init-param>
+		<!--
+			<init-param>
+			<description>
+				Optional: a comma-separated list of commands to execute 
+				from the perspective of the response half of the chain. The 
+				application will automatically construct a request chain by 
+				reversing the commands in the response chain. You also may
+				set this value with the capsule.response.chain system property.
+			</description>
+			<param-name>capsule.response.chain</param-name>
+			<param-value>javaserializer,hmac,base64</param-value>
+		</init-param>
+		-->
+		<!--
+		<init-param>
+			<description>
+				Optional: Sets the maximum size of each session cookie. This 
+				should be an integer value. A cookie size of greater than 4KB 
+				is not advisable. You also may set this value with the 
+				capsule.cookiesize system property.
+			</description>
+			<param-name>capsule.cookieSize</param-name>
+			<param-value>4</param-value>
+		</init-param>
+		-->
+		<!--
+		<init-param>
+			<description>
+				Optional: Sets the domain property of the session cookies that 
+				will be created. Defaults to the domain of the server the 
+				application is running on.
+			</description>
+			<param-name>capsule.cookieDomain</param-name>
+			<param-value>eharmony.com</param-value>
+		</init-param>
+		-->
+		<!--
+			<init-param>
+			<description>
+				Optional: Sets the path property of the session cookies that 
+				will be created. Defaults to /.
+			</description>
+			<param-name>capsule.cookiePath</param-name>
+			<param-value>/path</param-value>
+			</init-param>
+		-->
+		<!--
+			<init-param>
+			<description>
+				Optional: Sets the maxAge property of the session cookies that 
+				will be created. This should be an integer value representing
+				the number of seconds the cookie should remain valid. Defaults
+				to 7 days (604800 seconds).
+			</description>
+			<param-name>capsule.cookieMaxAge</param-name>
+			<param-value>604800</param-value>
+			</init-param>
+		-->
+		<!--
+			<init-param>
+			<description>
+				Optional: Enables the SessionCookieFilter when set to true. You
+				can also set this as a system property (-Dcapsule.enabled=true),
+				which is the more likely scenario for setting this property.
+			</description>
+			<param-name>capsule.disabled</param-name>
+			<param-value>true</param-value>
+			</init-param>
+		-->
+	</filter>
+	
+<!--
+	<filter-mapping>
+		<filter-name>GZipFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+-->
+	
+	<filter-mapping>
+		<filter-name>CapsuleFilter</filter-name>
+		<url-pattern>/foo/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>CapsuleFilter</filter-name>
+		<url-pattern>/session/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<description>
+			This is the primary test servlet for the example app. It puts 
+			simple attributes posted from the HTML form in the HttpSession. It
+			also loads the session with data to simulate large session sizes.
+		</description>
+		<servlet-name>TestServlet</servlet-name>
+		<servlet-class>com.eharmony.capsule.TestServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+			 A simple servlet that puts a few attributes in the HttpSession.
+			 Intended for testing how different data types work with Capsule.
+		</description>
+		<servlet-name>SessionTestServlet</servlet-name>
+		<servlet-class>com.eharmony.capsule.SessionTestServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>TestServlet</servlet-name>
+		<url-pattern>/foo/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SessionTestServlet</servlet-name>
+		<url-pattern>/session/*</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

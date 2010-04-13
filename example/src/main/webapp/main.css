@@ -1,0 +1,33 @@
+* {
+	font: 97% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+}
+h1 {
+	font-weight:bold;
+	color:#03C;
+	font-size:150%;
+}
+h2 {
+	font-weight:bold;
+	color:#03C;
+	font-size:115%;
+}
+h3 {
+	font-size:105%;
+	color:#03C;
+	font-weight:bold;
+}
+dl.form dt {
+	font-weight: bold;
+}
+dl.form dd {
+	margin-left: 0em;
+}
+td {
+	background-color:#9CC;
+	padding: 0.5em;
+	vertical-align:top;
+}
+td.spacer {
+	width:4em;
+	background-color:white;
+}
